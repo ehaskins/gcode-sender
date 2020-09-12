@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "target": "ES2019",
+    "strict": true,
+    "moduleResolution": "node"
+  },
+  "include": ["**/*.ts?"]
+}

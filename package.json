@@ -1,0 +1,12 @@
+{
+  "name": "gcode-sender-root",
+  "workspaces": [
+    "ui"
+  ],
+  "dependencies": {
+    "typescript": "^4.0.2"
+  },
+  "devDependencies": {
+    "pnp-webpack-plugin": "^1.6.4"
+  }
+}
