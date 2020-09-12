@@ -1,0 +1,12 @@
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[*.{bb,bbappend,conf,inc,sh}]
+indent_size = 2
+indent_style = space
+
+[*.pem]
+end_of_line = crlf
