@@ -3,7 +3,7 @@ const PnpWebpackPlugin = require(`pnp-webpack-plugin`)
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './src/app.tsx',
+  entry: './src/App.tsx',
   context: path.resolve(__dirname),
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -19,6 +19,7 @@ module.exports = {
     ],
   },
   resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
     plugins: [PnpWebpackPlugin],
   },
   resolveLoader: {

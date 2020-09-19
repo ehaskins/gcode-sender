@@ -600,6 +600,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"babylonjs@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "babylonjs@npm:4.1.0"
+  checksum: 752b9aeda4e0f96005a91926ed2c34911da7cba6255cec3602d144e006d094dd6a08d36fe83392e7dd71de1b94c6ddafb3ad45fd1af09fb5388c456bd757605a
+  languageName: node
+  linkType: hard
+
 "balanced-match@npm:^1.0.0":
   version: 1.0.0
   resolution: "balanced-match@npm:1.0.0"
@@ -2359,6 +2366,7 @@ fsevents@~2.1.2:
   dependencies:
     "@types/react": ^16.9.49
     "@types/react-dom": ^16.9.8
+    babylonjs: ^4.1.0
     html-webpack-plugin: ^4.4.1
     pnp-webpack-plugin: ^1.6.4
     react: ^16.13.1
