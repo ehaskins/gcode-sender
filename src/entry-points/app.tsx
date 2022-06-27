@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { FloatingSquare } from './FloatingSquare'
+import { FloatingSquare } from './floating-square'
 
 const App = () => {
   return (

@@ -3,10 +3,10 @@ const PnpWebpackPlugin = require(`pnp-webpack-plugin`)
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './src/App.tsx',
-  context: path.resolve(__dirname),
+  entry: './entry-points/app.tsx',
+  context: path.resolve(__dirname, '../src'),
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
     filename: 'bundle.js',
   },
   module: {

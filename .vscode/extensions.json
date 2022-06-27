@@ -1,7 +1,3 @@
 {
-  "recommendations": [
-    "arcanis.vscode-zipfs",
-    "esbenp.prettier-vscode",
-    "rust-lang.rust"
-  ]
+  "recommendations": ["esbenp.prettier-vscode"]
 }
