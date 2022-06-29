@@ -1,27 +1,26 @@
-enum TokenType {
-  Unknown,
-  Text,
-  Number,
-  Comment,
+export interface TextLocation {
+  line: number
+  column: number
+  length?: number
 }
 
-interface Token<T extends TokenType = TokenType> {
-  type: T
-  source: string
-  offset: number
-  length: number
-}
-interface TextToken extends Token<TokenType.Text> {
-  value: string
-}
-interface NumberToken extends Token<TokenType.Number> {
-  value: number
-}
-interface CommentToken extends Token<TokenType.Comment> {
-  value: string
+export class Word {
+  constructor(
+    public readonly location: TextLocation,
+    public readonly value: string
+  ) {}
 }
 
-interface Line {
+export class CommentWord {
+  constructor(
+    public readonly location: TextLocation,
+    public readonly value: string
+  ) {}
+}
+
+export type Token = Word | Comment
+
+export interface Line {
   lineNumber: number
   offset: number
   length: number
@@ -29,34 +28,34 @@ interface Line {
   tokens: Token[]
 }
 
-class LexerError extends Error {
-  constructor(message: string, line: number, col: number) {
+export class LexerError extends Error {
+  constructor(message: string, public readonly location: TextLocation) {
     super(message)
   }
 }
 
-function lex(source: string): Line[] {
+export function lex(source: string): Line[] {
   let lines: Line[] = []
 
   let lineOffset = 0
 
   while (lineOffset < source.length) {
-    lines.push(this.readLine(source, lineOffset))
+    lines.push(readLine(source, lineOffset, lines.length))
   }
 
   return lines
 }
 
 function readLine(source: string, offset: number, lineNumber: number): Line {
-  let tokens: Token[] = []
+  let tokens: Word[] = []
 
   let i: number
   for (i = offset; i < source.length; i++) {
-    if (isEndOfLine()) break
+    if (isEndOfLine(source, 1)) break
     if (source[i] === '(') {
       let [token, length] = readComment(source, i)
 
-      this.tokens.push(token)
+      tokens.push(token)
       i += length
     }
   }
@@ -71,7 +70,11 @@ function readLine(source: string, offset: number, lineNumber: number): Line {
 }
 
 function isEndOfLine(source: string, offset: number): boolean {
-  if (source.length < offset) throw new LexerError()
+  if (source.length < offset)
+    throw new LexerError('Read past end of source', {
+      line: 0,
+      column: 0,
+    })
   if (source.length === offset) return true
   if (source[offset] === '\n') return true
   if (source[offset] === '\r' && source[offset + 1] === '\n') return true
@@ -79,4 +82,6 @@ function isEndOfLine(source: string, offset: number): boolean {
   return false
 }
 
-function readComment(source: string, offset: number): [CommentToken, number] {}
+function readComment(source: string, offset: number): [CommentWord, number] {
+  return [new CommentWord({ line: 1, column: 0 }, 'foo'), 5]
+}

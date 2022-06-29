@@ -2,8 +2,18 @@
   "compilerOptions": {
     "jsx": "react",
     "target": "ES2019",
+    "lib": ["DOM", "ES2021"],
     "strict": true,
-    "moduleResolution": "node"
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "noEmit": true,
+    "outDir": "out"
   },
-  "include": ["**/*.ts?"]
+  "include": ["**/*.ts*"],
+  "ts-node": {
+    "transpileOnly": false,
+    "files": true,
+
+    "esm": false
+  }
 }
