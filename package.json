@@ -18,7 +18,9 @@
       "node_modules"
     ],
     "testEnvironment": "node",
-    "setupFilesAfterEnv": []
+    "setupFilesAfterEnv": [
+      "./src/lib/jest-extensions/index.ts"
+    ]
   },
   "devDependencies": {
     "@jest/globals": "^28.1.1",

@@ -1,7 +1,5 @@
 import { CommentWord, lex, Word } from './lexer'
-import 'jest'
 import { test, expect } from '@jest/globals'
-import 'lib/jest-extensions'
 
 const lines: Array<[string, Word[]]> = [
   [
